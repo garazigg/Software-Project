@@ -1,5 +1,5 @@
 # Software Project
-# CLARIAH Resource Builder · Team <TEAM NAME>
+# CLARIAH Resource Builder · Team 2
 
 **Software Project** (Language Technologies) · Master HAP/LAP · EHU · 2026-27
 Project **P4 · CLARIAH Resource Builder** · Client: **Jon**, technical coordinator and data steward
@@ -60,7 +60,7 @@ automatic licence detection; a universal validator for every metadata schema; ve
 | Ali Faraz | BSc Computer Science | **Product Owner** | &lt;P&gt; / &lt;M&gt; | the client, the order of the backlog, the vision, the demo |
 | Ángela Garrido Linares | Translation and Interpreting | **Scrum Master** | &lt;P&gt; / &lt;M&gt; | the board, the sprint plan and report, the retrospective |
 | Olga | Linguistics / data analysis | Developer | &lt;P&gt; / &lt;M&gt; | client meeting logs, use cases |
-| Marta | &lt;background&gt; | Developer | &lt;P&gt; / &lt;M&gt; | diagrams |
+| Marta | English and Spanish philology | Developer | &lt;P&gt; / &lt;M&gt; | diagrams |
 | Garazi | BSc Artificial Intelligence | Developer | &lt;P&gt; / &lt;M&gt; | risk register, data and licences |
 
 P = preferred Belbin roles, M = manageable roles. The team diagnosis is in
