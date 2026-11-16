@@ -1,4 +1,3 @@
-# Software Project
 # CLARIAH Resource Builder · Team 2
 
 **Software Project** (Language Technologies) · Master HAP/LAP · EHU · 2026-27
@@ -13,7 +12,8 @@ for CLARIAH-EUS (played by a Latxa-based agent)
 [Product vision](docs/product/vision.md) ·
 [Product backlog](docs/backlog/product-backlog.md) ·
 [Sprint 1 plan](docs/sprints/sprint-1-plan.md) ·
-[Issues](../../issues) · [Project board](../../projects)
+[Issues](../../issues) ·
+[Project board](https://github.com/users/garazigg/projects/4/views/1)
 
 ---
 
@@ -21,11 +21,13 @@ for CLARIAH-EUS (played by a Latxa-based agent)
 
 1. [The product](#the-product)
 2. [The team](#the-team)
-3. [How we work](#how-we-work)
-4. [What is where](#what-is-where)
-5. [Sprint 1 checklist](#sprint-1-checklist)
-6. [Git workflow](#git-workflow)
-7. [Data, keys and external services](#data-keys-and-external-services)
+3. [Our objectives](#our-objectives)
+4. [How we work](#how-we-work)
+5. [Team rules](#team-rules)
+6. [What is where](#what-is-where)
+7. [Sprint 1 checklist](#sprint-1-checklist)
+8. [Git workflow](#git-workflow)
+9. [Data, keys and external services](#data-keys-and-external-services)
 
 ---
 
@@ -55,50 +57,89 @@ automatic licence detection; a universal validator for every metadata schema; ve
 
 ## The team
 
-| Member | Background | Role in sprint 1 | Belbin (P / M) | Looks after |
+| Member | Background | Belbin (P / M) | Role in sprint 1 | Looks after |
 |---|---|---|---|---|
-| Ali Faraz | BSc Computer Science | **Product Owner** | &lt;P&gt; / &lt;M&gt; | the client, the order of the backlog, the vision, the demo |
-| Ángela Garrido Linares | Translation and Interpreting | **Scrum Master** | &lt;P&gt; / &lt;M&gt; | the board, the sprint plan and report, the retrospective |
-| Olga | Linguistics / data analysis | Developer | &lt;P&gt; / &lt;M&gt; | client meeting logs, use cases |
-| Marta | English and Spanish philology | Developer | &lt;P&gt; / &lt;M&gt; | diagrams |
-| Garazi | BSc Artificial Intelligence | Developer | &lt;P&gt; / &lt;M&gt; | risk register, data and licences |
+| **Ali Faraz** | BSc Computer Science | Coordinator / Monitor Evaluator | **Product Owner** | Leads every conversation with the client; approves and orders the final user stories; the vision and the demo |
+| **Ángela Garrido** | Translation and Interpreting (German and French) | Resource Investigator / Shaper | **Scrum Master** | Communicates the tasks, logs the working hours, internal communication; the board, the sprint plan and report, the retrospective |
+| **Olga** | Linguistics / data analysis | Completer Finisher / Coordinator | Developer | Client interview guide; reviews the user stories and the technical parts of the vision (clear, buildable and testable) |
+| **Marta Salvatierra** | Spanish and English Philology | Completer Finisher / Teamworker | Developer | Client meeting logs and transcripts; turns Jon's confirmed needs into user stories; the requirements document; reviews the wording of our documents; supports the Scrum Master |
+| **Garazi Garrido** | Artificial Intelligence | Resource Investigator / Specialist | Developer | GitHub set-up (repository, folders, board) and teaching the team to use it; GitHub issues from the user stories; reviews the risk register and creates the mitigation issues; sample data and licences; this README |
 
-P = preferred Belbin roles, M = manageable roles. The team diagnosis is in
-[docs/belbin/](docs/belbin/).
+P = preferred Belbin roles, M = manageable roles.
 
-The Product Owner keeps the role for the whole course. Whether the other roles rotate in sprint 2
-is set in the [team charter](docs/team/team-charter.md).
+**Role rotation:** the Scrum Master role rotates at the start of each sprint. The Product Owner
+keeps the role for the whole course.
+
+### Team diagnosis
+
+- **Covered naturally:** Coordinator (Ali), Resource Investigator (Ángela, Garazi), Completer
+  Finisher (Olga, Marta). We organise well, look for ideas and tools outside the team, and check
+  the quality of what we deliver.
+- **Somebody steps up:** Monitor Evaluator (Ali), Shaper (Ángela, as Scrum Master), Teamworker
+  (Marta), Specialist (Garazi), Coordinator as backup (Olga).
+- **Uncovered: Plant and Implementer.**
+  - *Implementer* → the Scrum Master splits the work into small tasks on the board, each with an
+    owner and a deadline.
+  - *Plant* → at the start of each sprint we hold a short brainstorming in which everyone proposes
+    ideas, and the Resource Investigators bring examples and tools from outside the team.
+
+## Our objectives
+
+- Deliver a CLARIAH Resource Builder that Jon can really use, combining our linguistic profiles
+  (translation, philology, linguistics) with our technical ones (computer science, AI).
+- Learn the tools of a real software team (Scrum, GitHub issues, board, pull requests): the
+  linguists gain confidence with them, and the technical members learn to work with linguistic
+  requirements.
+- Understand the architecture of our project well enough that every member can explain any part of
+  it at the reviews.
 
 ## How we work
 
-Summary of the [team charter](docs/team/team-charter.md), which every member has signed. The charter
-is the reference if anything here disagrees with it.
+Summary of the [team charter](docs/team/team-charter.md). The charter is the reference if anything
+here disagrees with it.
 
 | | |
 |---|---|
-| **Meetings** | &lt;weekly meeting: day, time, place or Zoom&gt; · &lt;stand-up format and frequency&gt; |
-| **Communication** | Work is discussed in GitHub issues; logistics in &lt;chat channel&gt;. Expected answer time: &lt;…&gt; |
-| **Decisions** | Consensus by default. Without consensus: the Product Owner decides scope and priorities, the Scrum Master decides process, &lt;…&gt; decides technical choices. Decisions are written in &lt;…&gt; |
-| **Tasks** | Picked from the board; estimated and real hours logged in the issue; max. &lt;n&gt; cards in progress per person |
-| **AI assistants** | &lt;how the team uses them and how it says so in its work&gt; |
+| **Meetings** | Day and time agreed each week according to availability; face-to-face or on Google Meet. Stand-ups go to the GitHub issue *"Stand-ups Sprint 1"* (while the team learns GitHub, they are posted in WhatsApp and the Scrum Master copies them there). |
+| **Communication** | Work and decisions in **GitHub issues**; logistics in the WhatsApp group and by e-mail. We answer within **2 hours** during working hours (Mon–Fri, 10:00–14:00), otherwise on the next working day. |
+| **Availability** | About **15 hours per member in sprint 1** (≈ 7 h/week). Exact hours are set in each sprint plan. |
+| **Decisions** | Majority vote of the whole team, giving weight to each member's expertise on the topic (linguistic or technical). On a tie, the Scrum Master decides. Every decision is written in the related issue. |
+| **Tasks** | The Scrum Master assigns tasks in consensus with the team (role, skills, availability). Each task logs **estimated** and **real** hours. |
+| **AI assistants** | Used to draft, review and explain. Each member reviews what they commit and can explain it. Every document or pull request that used AI says so in one line: `AI use: …` |
+
+## Team rules
+
+1. **Working language: English.** We help those who do not master it to communicate.
+2. **Respect** for each other and each other's efforts: if a deadline or the expected quality is
+   missed despite genuine effort, no one is blamed.
+3. **Deadlines and attendance:** we aim to meet every deadline with the expected quality. A member
+   who cannot attend a meeting warns in advance and catches up through chat or e-mail.
+4. **Disagreeing constructively:** we always propose an alternative instead of only criticising.
+5. **Healthy environment:** assertiveness and active listening come first.
+
+**Conflicts.** Misunderstandings are clarified in the moment, focusing on the work. Work that meets
+the definition of done is finished; extra improvements go to the backlog. If a member falls behind,
+the Scrum Master follows up and the task is split or shared; if it happens again, the instructors
+are told. Full table in the [team charter](docs/team/team-charter.md).
 
 ## What is where
 
 | Folder | What it holds | Owner |
 |---|---|---|
-| [`docs/team/`](docs/team/) | Team charter: roles, rules, how we decide, conflicts, signatures | whole team |
+| [`docs/team/`](docs/team/) | Team charter: roles, rules, how we decide, conflicts, signatures | Ángela (harmonises) · whole team |
 | [`docs/belbin/`](docs/belbin/) | Belbin roles of each member and the team diagnosis | whole team |
-| [`docs/client/`](docs/client/) | One log per conversation with Jon, plus the exported transcripts | Olga (logs) · Ali (client contact) |
-| [`docs/product/`](docs/product/) | Product vision | Ali (PO) |
-| [`docs/backlog/`](docs/backlog/) | Product backlog: epics and user stories. Each story is also a GitHub issue | Ali (PO) |
-| [`docs/requirements/`](docs/requirements/) | Stakeholders, use cases, constraints | Olga |
-| [`docs/uml/`](docs/uml/) | Component diagram and deployment diagram | Marta |
-| [`docs/risks/`](docs/risks/) | Risk register, data and licences | Garazi |
+| [`docs/client/`](docs/client/) | Interview guide, one log per conversation with Jon, exported transcripts | Marta (logs) · Olga (guide) · Ali (lead) |
+| [`docs/product/`](docs/product/) | Product vision | Ali (PO) · reviewed by Olga |
+| [`docs/backlog/`](docs/backlog/) | Product backlog: epics and user stories. Each story is also a GitHub issue | Marta (writes) · Olga (reviews) · Ali (approves and orders) · Garazi (issues) |
+| [`docs/requirements/`](docs/requirements/) | Stakeholders, use cases, constraints | Marta |
+| [`docs/uml/`](docs/uml/) | Component diagram and deployment diagram | &lt;owner&gt; |
+| [`docs/risks/`](docs/risks/) | Risk register and mitigation issues | Garazi (review and issues) |
 | [`docs/sprints/`](docs/sprints/) | Sprint plan, sprint report and retrospective, one set per sprint | Ángela (SM) |
-| [`docs/board/`](docs/board/) | How we use the GitHub project board, with a snapshot | Ángela (SM) |
+| [`docs/board/`](docs/board/) | How we use the GitHub project board, with a snapshot | Ángela (SM) · Garazi (set-up) |
+| [`data/README.md`](data/README.md) | Sample data and licences (the data itself is not committed) | Garazi |
 | [`src/`](src/) | Python skeleton: one module per component of the diagram, nothing implemented yet | developers |
 | [`scripts/`](scripts/) | Helper scripts | developers |
-| [`.github/`](.github/) | Issue templates (user story, task) and pull request template | — |
+| [`.github/`](.github/) | Issue templates (user story, task) and pull request template | Garazi |
 
 ## Sprint 1 checklist
 
@@ -106,12 +147,12 @@ Deliverables for the **Sprint 1 review (S06, 17 November)**.
 
 | Deliverable | File | Owner | Status |
 |---|---|---|---|
-| Team charter | [`docs/team/team-charter.md`](docs/team/team-charter.md) | whole team | ⬜ to do |
+| Team charter | [`docs/team/team-charter.md`](docs/team/team-charter.md) | whole team | ✅ done |
 | Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | ⬜ to do |
-| Client conversation logs with confirmed requirements | [`docs/client/`](docs/client/) | Olga | ⬜ to do |
-| 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + Issues tab | Ali | ⬜ to do |
-| Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Olga | ⬜ to do |
-| Architecture (component and deployment diagrams) | [`docs/uml/`](docs/uml/) | Marta | ⬜ to do |
+| Client conversation logs with confirmed requirements | [`docs/client/`](docs/client/) | Marta | ⬜ to do |
+| 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + Issues tab | Marta · Ali · Garazi | ⬜ to do |
+| Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Marta | ⬜ to do |
+| Architecture (component and deployment diagrams) | [`docs/uml/`](docs/uml/) | &lt;owner&gt; | ⬜ to do |
 | Risk register | [`docs/risks/risk-register.md`](docs/risks/risk-register.md) | Garazi | ⬜ to do |
 | Sprint 1 plan with the definition of done | [`docs/sprints/sprint-1-plan.md`](docs/sprints/sprint-1-plan.md) | Ángela | ⬜ to do |
 | Sprint 1 report | [`docs/sprints/sprint-1-report.md`](docs/sprints/sprint-1-report.md) | Ángela | ⏳ at S06 |
@@ -128,13 +169,15 @@ history. For the eGela submission each document is exported to PDF.
   merged into `main` through a pull request reviewed by a member who did not write it.
 - Every member commits with their own GitHub account.
 - Every story and every task is an issue, created from the templates in `.github/ISSUE_TEMPLATE/`.
-  The board shows where each one is; move your own cards.
-- Commits, issues, pull requests and documents are written in English.
+  The [board](https://github.com/users/garazigg/projects/4/views/1) shows where each one is.
+- Each issue records the estimated and the real hours of the task.
+- Commits, issues, pull requests and documents are written in English. Pull requests that used AI
+  include an `AI use: …` line.
 
 ## Data, keys and external services
 
-- Keys and data never enter the repository: `.env` and `data/` are ignored. `.env.example` lists
-  the variables without values.
+- Keys and data never enter the repository: `.env` and `data/` are ignored (except
+  `data/README.md`). `.env.example` lists the variables without values.
 - The application runs entirely on CPU and needs no external service. If the optional Latxa API is
   used, its responses are recorded once and replayed in tests and in the demonstration, so nothing
   depends on a live service.
