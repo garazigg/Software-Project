@@ -151,7 +151,7 @@ Deliverables for the **Sprint 1 review (S06, 17 November)**.
 | Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | ⬜ to do |
 | Client conversation logs with confirmed requirements | [`docs/client/`](docs/client/) | Marta | ⬜ to do |
 | 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + Issues tab | Marta · Ali · Garazi | ⬜ to do |
-| Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Marta | ⬜ to do |
+| Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Garazi |  ✅ done |
 | Architecture (component and deployment diagrams) | [`docs/uml/`](docs/uml/) | &lt;owner&gt; | ⬜ to do |
 | Risk register | [`docs/risks/risk-register.md`](docs/risks/risk-register.md) | Garazi | ⬜ to do |
 | Sprint 1 plan with the definition of done | [`docs/sprints/sprint-1-plan.md`](docs/sprints/sprint-1-plan.md) | Ángela | ⬜ to do |
