@@ -1,7 +1,7 @@
 # Requirements · CLARIAH Resource Builder
 
 Project P4 · Software Project · Master HAP/LAP · EHU · 2026-27 · **Team 2**
-Written by: Marta Salvatierra · Reviewed by: Olga · Approved by: Ali Faraz (PO)
+Written by: Garazi Garrido · Reviewed by: Olga · Approved by: Ali Faraz (PO)
 Status: **draft** · Last update: <date>
 
 > Every requirement points to its source: the project brief (`Brief §n`) or a requirement confirmed
