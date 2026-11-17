@@ -11,7 +11,7 @@ for CLARIAH-EUS (played by a Latxa-based agent)
 **Quick links:** [Team charter](docs/team/team-charter.md) ·
 [Product vision](docs/product/vision.md) ·
 [Product backlog](docs/backlog/product-backlog.md) ·
-[Sprint 1 plan](docs/sprints/sprint-1-plan.md) ·
+[Sprint 1 plan](docs/sprints/sprint-1-plan.pdf) ·
 [Issues](../../issues) ·
 [Project board](https://github.com/users/garazigg/projects/4/views/1)
 
@@ -161,13 +161,13 @@ Deliverables for the **Sprint 1 review (S06, 17 November)**.
 |---|---|---|---|
 | Team charter | [`docs/team/team-charter.md`](docs/team/team-charter.md) | whole team | ✅ done |
 | Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | ✅ done |
-| Client conversation logs with confirmed requirements | [`docs/client/`](docs/client/) | Marta | ⬜ to do |
-| 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + Issues tab | Marta · Ali · Garazi | ⬜ to do |
+| Client conversation logs with confirmed requirements | [`docs/client/client-interviews.pdf`](docs/client/client-interviews.pdf) | Marta | ⬜ to do |
+| 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + [Issues tab](../../issues?q=label%3Astory) (12 stories) | Marta · Ali · Garazi | ✅ done |
 | Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Garazi |  ✅ done |
 | Architecture (component and deployment diagrams) | [`docs/uml/`](docs/uml/) | &lt;owner&gt; | ⬜ to do |
 | Risk register | [`docs/risks/risks.md`](docs/risks/risks.md) | Garazi | 🔄 in progress |
-| Sprint 1 plan with the definition of done | [`docs/sprints/sprint-1-plan.md`](docs/sprints/sprint-1-plan.md) | Ángela | ⬜ to do |
-| Sprint 1 report | [`docs/sprints/sprint-1-report.md`](docs/sprints/sprint-1-report.md) | Ángela | ⏳ at S06 |
+| Sprint 1 plan with the definition of done | [`docs/sprints/sprint-1-plan.pdf`](docs/sprints/sprint-1-plan.pdf) | Ángela | ⬜ to do |
+| Sprint 1 report | [`docs/sprints/sprint-1-report.pdf`](docs/sprints/sprint-1-report.pdf) | Ángela | ⏳ at S06 |
 | Retrospective 1 | [`docs/sprints/retrospective-1.md`](docs/sprints/retrospective-1.md) | Ángela | ⏳ at S06 |
 
 Status key: ⬜ to do · 🔄 in progress · ✅ done · ⏳ at the review session.
