@@ -7,7 +7,7 @@ Status: **draft v2** · Last update: 17 November 2026
 > Every requirement points to its source: the project brief (`Brief`) or a requirement confirmed
 > by the client (`CR-nn`). The confirmed requirements CR-01 to CR-12 and the additional V1
 > decisions are listed in the [product vision](../product/vision.md) §5 and recorded in
-> [`docs/client/`](../client/). Items marked **to confirm** still need a decision.
+> [`docs/client/client-interviews.pdf`](../client/client-interviews.pdf). Items marked **to confirm** still need a decision.
 >
 > AI use: drafted with the help of an AI assistant (Claude) and reviewed by the team.
 
@@ -80,7 +80,7 @@ file is never modified.
 | Stakeholder | Interest | How they use the tool |
 |---|---|---|
 | **Data steward** (Jon, our client) | Validate resources predictably and produce a package he can trust | Main user: submits, validates, completes metadata, fixes, approves, exports |
-| **Researcher** (resource provider) | Get the resource accepted without long e-mail exchanges | Receives the human-readable report (web or PDF) and fixes their own file |
+| **Researcher** (resource provider) | Get the resource accepted without long e-mail exchanges | Submits the resource (US-02), provides its metadata (US-08), receives the human-readable report (web or PDF) and fixes their own file |
 | **Package consumer** (CLARIAH-EUS, future users) | Find, understand and reuse the resource legally | Receives the package; relies on metadata, licence and history |
 | **Teaching team** | Assess the process and the product | Reviews the repository, the documents and the demonstration |
 
@@ -90,7 +90,7 @@ file is never modified.
 
 | | |
 |---|---|
-| **Primary actor** | Data steward |
+| **Primary actor** | Data steward (the researcher can submit the file, US-02) |
 | **Goal** | Know exactly what is wrong with a resource, and where, so that it can be fixed |
 | **Source** | Brief · CR-01, CR-02, CR-03, CR-04, CR-05, CR-06 |
 | **Preconditions** | The steward has a CSV or JSONL file within the documented size limit |
@@ -134,7 +134,7 @@ file is never modified.
 
 | | |
 |---|---|
-| **Primary actor** | Data steward |
+| **Primary actor** | Data steward or researcher (US-08) |
 | **Goal** | Provide the information that only a person can decide, such as the licence |
 | **Source** | CR-08, CR-09 · Dublin Core (V1 decision) |
 | **Preconditions** | The resource has been validated (UC-1) |
@@ -213,48 +213,46 @@ file is never modified.
 
 ## 5. User stories
 
-Each story is also a GitHub issue created from the *User story* template, with its acceptance
-criteria. The full list and the order are in the
-[product backlog](../backlog/product-backlog.md). Priority: **M** must · **S** should · **C** could.
-The epics are the ones of the [product vision](../product/vision.md) §4.
+Each story is a GitHub issue (label `story`) created from the *User story* template, with its
+acceptance criteria. The order and the points are in the [product backlog](../backlog/product-backlog.md).
+Priority: **M** must · **S** should · **C** could. Epics as in the [product vision](../product/vision.md) §4.
 
 ### Epic E1 · Validation
 
 | ID | Story | Use case | Priority | Source |
 |---|---|---|---|---|
-| US-01 | As a data steward, I want to submit a resource in CSV or JSONL so that I can check it without changing the original | UC-1 | M | CR-01 |
-| US-02 | As a data steward, I want the tool to check structure, missing values, duplicate IDs, encoding, data types and language codes so that I do not have to check them by hand | UC-1 | M | CR-03 |
+| US-02 | As a researcher, I want to submit a linguistic resource in CSV or JSONL format, so that the resource can be checked by the Resource Builder. | UC-1 | M | CR-01 |
+| US-04 | As a data steward, I want the system to automatically check resource structure, missing values, duplicate IDs, encoding, data types and language codes, so that common data-quality problems are detected consistently. | UC-1 | M | CR-03 |
 
 ### Epic E2 · Reporting
 
 | ID | Story | Use case | Priority | Source |
 |---|---|---|---|---|
-| US-03 | As a data steward, I want each finding classified as error, warning or missing decision, with errors blocking acceptance, so that I know what to fix first | UC-1 | M | CR-04 |
-| US-04 | As a data steward, I want each finding to show the file, row, field, found value and expected value so that the researcher can fix it | UC-1 | M | CR-05 |
-| US-05 | As a researcher, I want the report as a web page and as a PDF, with the counts of each severity, so that I can fix my own file | UC-1 | M | CR-06 |
-| US-06 | As a data steward, I want the report in JSON so that other tools can read it | UC-1 | M | CR-06 |
-| US-07 | As a data steward, I want to compare a new report with the previous one so that I see what is fixed, still open and new | UC-2 | S | CR-07 |
+| US-01 | As a data steward, I want the report to show the file, row, field, found value and expected value of every problem, so that the researcher can fix the file without emailing me. | UC-1 | M | CR-05 |
+| US-05 | As a data steward, I want each validation finding to be classified as an error, warning or missing decision, so that I can distinguish blocking problems from issues that need attention. | UC-1 | M | CR-04 |
+| US-06 | As a data steward, I want validation reports in machine-readable JSON and human-readable web-page and PDF formats, with counts by severity, so that both people and other tools can understand the validation results. | UC-1 | S | CR-06 |
+| US-07 | As a data steward, I want to compare a new validation report with the previous report for the same resource, so that I can see which problems have been fixed, remain open or are newly detected. | UC-2 | S | CR-07 |
 
 ### Epic E3 · Metadata and licences
 
 | ID | Story | Use case | Priority | Source |
 |---|---|---|---|---|
-| US-08 | As a data steward, I want to see which mandatory Dublin Core fields (title, language code, producer, description, licence) are missing so that nothing is guessed | UC-3 | M | CR-08 |
-| US-09 | As a data steward, I want to choose the licence from an approved, editable list (CC0 1.0, CC-BY 4.0, CC-BY-SA 4.0) so that only valid licences are used and none is guessed | UC-3 | M | CR-09 |
+| US-08 | As a researcher, I want to provide the required metadata for my resource, including its title, language code, producer, description and licence, so that the resource is properly described before it is packaged. | UC-3 | M | CR-08 |
+| US-09 | As a data steward, I want the resource licence to be selected from an approved, editable list, so that no resource is assigned an invented or incorrect licence by the tool. | UC-3 | M | CR-09 |
 
 ### Epic E4 · Preservation and revisions
 
 | ID | Story | Use case | Priority | Source |
 |---|---|---|---|---|
-| US-10 | As a data steward, I want the original file preserved byte for byte, with a checksum as proof, so that I can always go back to it | UC-1 | M | CR-02 |
-| US-11 | As a data steward, I want safe formatting fixes saved as separate, logged revisions, and fixes that may change meaning left to a person, so that every change is traceable | UC-4 | M | CR-10 |
+| US-03 | As a data steward, I want the original uploaded file to remain unchanged byte for byte and have a checksum recorded, so that the original resource can be verified and recovered. | UC-1 | M | CR-02 |
+| US-10 | As a data steward, I want safe formatting fixes to be applied as separate, logged revisions and fixes that may change the meaning to require human review, so that corrections are traceable and do not silently change the resource’s meaning. | UC-4 | M | CR-10 |
 
 ### Epic E5 · Export
 
 | ID | Story | Use case | Priority | Source |
 |---|---|---|---|---|
-| US-12 | As a data steward, I want to export a ZIP with data, metadata, README, licence, reports and revision history, named by resource and version, so that I can hand it over | UC-5 | M | CR-11 |
-| US-13 | As a data steward, I want to approve a package explicitly before it is exported so that no package leaves the tool without final quality control | UC-5 | M | CR-12 |
+| US-11 | As a data steward, I want to export a ZIP package containing the resource data, metadata, README, licence information, validation reports and revision history, so that I can provide a complete and traceable resource package. | UC-5 | M | CR-11 |
+| US-12 | As a data steward, I want to explicitly approve the final package after quality control and before export, so that only an approved package can be downloaded. | UC-5 | C | CR-12 |
 
 ## 6. Constraints
 
