@@ -4,9 +4,9 @@
 Project **P4 · CLARIAH Resource Builder** · Client: **Jon**, technical coordinator and data steward
 for CLARIAH-EUS (played by a Latxa-based agent)
 
-> A tool that takes an imperfect linguistic resource, tells the researcher exactly what is wrong
-> with it in a way they can act on, collects the metadata that must not be guessed, and produces a
-> clean, reproducible package, leaving the original file untouched.
+> A tool that helps CLARIAH-EUS data stewards turn imperfect linguistic resources into clean,
+> validated and documented packages, without ever changing the original files.
+> ([Product vision](docs/product/vision.md))
 
 **Quick links:** [Team charter](docs/team/team-charter.md) ·
 [Product vision](docs/product/vision.md) ·
@@ -33,27 +33,39 @@ for CLARIAH-EUS (played by a Latxa-based agent)
 
 ## The product
 
-A data steward submits a resource and receives a validation report that says precisely what is
-wrong and where (record, field, what was found, what was expected), separating **errors**,
-**warnings** and **missing decisions**. The steward then supplies the metadata that cannot be
-inferred (for example the licence, chosen from a fixed approved list), applies controlled
-transformations, and exports a package with the data, the metadata, the validation report and the
-history of what was done. The original file is preserved byte for byte, and every transformation is
-a separate, logged revision.
+A data steward submits a resource in **CSV or JSONL** and receives a validation report that says
+precisely what is wrong and where (file, row, field, found value, expected value), separating
+**errors**, **warnings** and **missing decisions**. Errors block acceptance. The report is available
+as **JSON**, as a **web page** and as a **PDF**, and can be compared with the previous one (fixed,
+still open, new). The steward then supplies the mandatory **Dublin Core** metadata (title, language
+code, producer, description, licence), chooses the licence from an approved list (CC0 1.0, CC-BY 4.0,
+CC-BY-SA 4.0), applies safe formatting fixes, **approves** the result and exports a **ZIP** package.
+The original file is preserved byte for byte (checked with a checksum), and every fix is a separate,
+logged revision.
 
 ```
-resource ──► validate ──► report (errors · warnings · missing decisions)
-                              │
-                              ▼
-              steward adds metadata + applies transformations (each one logged)
-                              │
-                              ▼
-           package = data + metadata + validation report + history
-           (original file kept byte for byte)
+CSV / JSONL ──► validate ──► report: JSON · web · PDF  (errors · warnings · missing decisions)
+                                 │        ▲
+                                 │        └── compare with the previous report
+                                 ▼
+          steward adds Dublin Core metadata + licence, applies safe fixes (each one a revision)
+                                 │
+                                 ▼
+                     steward approves the package
+                                 │
+                                 ▼
+   <resource>_<version>.zip = data + metadata + README + licence + reports + revision history
+   (original file kept byte for byte, checksum included)
 ```
 
-**Out of scope:** real deposit into CLARIN, Zenodo or any other repository; FAIR certification;
-automatic licence detection; a universal validator for every metadata schema; very large files.
+**Epics (V1):** E1 Validation · E2 Reporting · E3 Metadata and licences · E4 Preservation and
+revisions · E5 Export. Confirmed client requirements CR-01 to CR-12 are listed in the
+[product vision](docs/product/vision.md#5-scope-in-version-1).
+
+**Out of scope (V1):** uploading packages to CLARIAH or any other repository; FAIR certification;
+automatic licence detection or legal advice; a universal validator for every format or schema; very
+large files (a size limit is documented); a full web application with user roles, permissions and
+e-mail notifications; Excel or ZIP files as input; training and community channels.
 
 ## The team
 
@@ -136,7 +148,7 @@ are told. Full table in the [team charter](docs/team/team-charter.md).
 | [`docs/risks/`](docs/risks/) | Risk register and mitigation issues | Garazi (review and issues) |
 | [`docs/sprints/`](docs/sprints/) | Sprint plan, sprint report and retrospective, one set per sprint | Ángela (SM) |
 | [`docs/board/`](docs/board/) | How we use the GitHub project board, with a snapshot | Ángela (SM) · Garazi (set-up) |
-| [`data/README.md`](data/README.md) | Sample data and licences (the data itself is not committed) | Garazi |
+| [`data/README.md`](data/README.md) | Sample datasets recommended by Jon (20 Newsgroups, OMW, NLTK) and their licences (the data itself is not committed) | Garazi |
 | [`src/`](src/) | Python skeleton: one module per component of the diagram, nothing implemented yet | developers |
 | [`scripts/`](scripts/) | Helper scripts | developers |
 | [`.github/`](.github/) | Issue templates (user story, task) and pull request template | Garazi |
@@ -148,12 +160,12 @@ Deliverables for the **Sprint 1 review (S06, 17 November)**.
 | Deliverable | File | Owner | Status |
 |---|---|---|---|
 | Team charter | [`docs/team/team-charter.md`](docs/team/team-charter.md) | whole team | ✅ done |
-| Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | ⬜ to do |
+| Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | ✅ done |
 | Client conversation logs with confirmed requirements | [`docs/client/`](docs/client/) | Marta | ⬜ to do |
 | 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + Issues tab | Marta · Ali · Garazi | ⬜ to do |
 | Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Garazi |  ✅ done |
 | Architecture (component and deployment diagrams) | [`docs/uml/`](docs/uml/) | &lt;owner&gt; | ⬜ to do |
-| Risk register | [`docs/risks/risk-register.md`](docs/risks/risk-register.md) | Garazi | ⬜ to do |
+| Risk register | [`docs/risks/risks.md`](docs/risks/risks.md) | Garazi | 🔄 in progress |
 | Sprint 1 plan with the definition of done | [`docs/sprints/sprint-1-plan.md`](docs/sprints/sprint-1-plan.md) | Ángela | ⬜ to do |
 | Sprint 1 report | [`docs/sprints/sprint-1-report.md`](docs/sprints/sprint-1-report.md) | Ángela | ⏳ at S06 |
 | Retrospective 1 | [`docs/sprints/retrospective-1.md`](docs/sprints/retrospective-1.md) | Ángela | ⏳ at S06 |
@@ -181,4 +193,5 @@ history. For the eGela submission each document is exported to PDF.
 - The application runs entirely on CPU and needs no external service. If the optional Latxa API is
   used, its responses are recorded once and replayed in tests and in the demonstration, so nothing
   depends on a live service.
-- Only instructor-provided or instructor-approved data is processed.
+- Only instructor-provided, instructor-approved or client-recommended data is processed, after
+  checking the licence of the exact files in [`data/README.md`](data/README.md).
