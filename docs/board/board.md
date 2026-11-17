@@ -45,7 +45,7 @@ Every task belongs to a story or to a risk: write `Part of #<n>` in its descript
 4. **Maximum 2 cards in *In Progress* per person**, so that work is finished before new work
    starts.
 5. **Done means done.** A card goes to *Done* only when it meets the definition of done in the
-   [sprint plan](../sprints/sprint-1-plan.md) and its result is in the repository and linked
+   [sprint plan](../sprints/sprint-1-plan.pdf) and its result is in the repository and linked
    from the issue.
 6. **Decisions** about a card are written as comments in its issue, in English.
 7. **Stand-ups** are posted in the issue *"Stand-ups Sprint 1"*: what I did, what I will do,
