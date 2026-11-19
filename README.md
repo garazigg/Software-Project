@@ -4,13 +4,14 @@
 Project **P4 · CLARIAH Resource Builder** · Client: **Jon**, technical coordinator and data steward
 for CLARIAH-EUS (played by a Latxa-based agent)
 
-> A tool that helps CLARIAH-EUS data stewards turn imperfect linguistic resources into clean,
-> validated and documented packages, without ever changing the original files.
-> ([Product vision](docs/product/vision.md))
+> A tool that prepares linguistic resources for CLARIAH-EUS: it checks their format, measures how
+> far two annotations agree and packages the results in a ZIP, without ever changing the original
+> files. ([Product vision](docs/product/vision.md))
 
 **Quick links:** [Team charter](docs/team/team-charter.md) ·
 [Product vision](docs/product/vision.md) ·
 [Product backlog](docs/backlog/product-backlog.md) ·
+[Risk register](docs/risks/risks.md) ·
 [Sprint 1 plan](docs/sprints/sprint-1-plan.pdf) ·
 [Issues](../../issues) ·
 [Project board](https://github.com/users/garazigg/projects/4/views/1)
@@ -33,39 +34,43 @@ for CLARIAH-EUS (played by a Latxa-based agent)
 
 ## The product
 
-A data steward submits a resource in **CSV or JSONL** and receives a validation report that says
-precisely what is wrong and where (file, row, field, found value, expected value), separating
-**errors**, **warnings** and **missing decisions**. Errors block acceptance. The report is available
-as **JSON**, as a **web page** and as a **PDF**, and can be compared with the previous one (fixed,
-still open, new). The steward then supplies the mandatory **Dublin Core** metadata (title, language
-code, producer, description, licence), chooses the licence from an approved list (CC0 1.0, CC-BY 4.0,
-CC-BY-SA 4.0), applies safe formatting fixes, **approves** the result and exports a **ZIP** package.
-The original file is preserved byte for byte (checked with a checksum), and every fix is a separate,
-logged revision.
+A data steward submits one or two resources in **CSV or JSONL**. The tool stores the original
+read-only with a **SHA-256 checksum** and records its metadata (name, format, size, checksum, date,
+submitter) from the file and the run, never typed in. It then **checks the format** (structure,
+column names, missing values, inconsistent labels) and returns either "OK, no issues" or a report
+that says where every issue is (file, row or line, column or field, type). For two annotation files
+of the same items, it computes their **agreement** as a percentage with the detail per label, and
+refuses files that cannot be compared. Finally it **packages** the report, the metadata and the log
+into one **ZIP**. Every action is logged, and the original file is never modified.
 
 ```
-CSV / JSONL ──► validate ──► report: JSON · web · PDF  (errors · warnings · missing decisions)
-                                 │        ▲
-                                 │        └── compare with the previous report
-                                 ▼
-          steward adds Dublin Core metadata + licence, applies safe fixes (each one a revision)
-                                 │
-                                 ▼
-                     steward approves the package
-                                 │
-                                 ▼
-   <resource>_<version>.zip = data + metadata + README + licence + reports + revision history
-   (original file kept byte for byte, checksum included)
+1 or 2 files (CSV / JSONL)
+        │
+        ▼
+ 1. submit ── original stored read-only + SHA-256 + metadata + log entry
+        │
+        ▼
+ 2. format check ── issues? ──yes──► issue report ──────────────┐
+        │ no                                                    │
+        ▼                                                       │
+ 3. agreement (2 files) ── % + per label (later: Cohen's kappa)  │
+        │                                                       │
+        ▼                                                       ▼
+ 4. package ── ZIP = report + metadata + log (originals copied or referenced, never modified)
 ```
 
-**Epics (V1):** E1 Validation · E2 Reporting · E3 Metadata and licences · E4 Preservation and
-revisions · E5 Export. Confirmed client requirements CR-01 to CR-12 are listed in the
-[product vision](docs/product/vision.md#5-scope-in-version-1).
+Command line first; a web interface with the same steps later, on top of the same core.
 
-**Out of scope (V1):** uploading packages to CLARIAH or any other repository; FAIR certification;
-automatic licence detection or legal advice; a universal validator for every format or schema; very
-large files (a size limit is documented); a full web application with user roles, permissions and
-e-mail notifications; Excel or ZIP files as input; training and community channels.
+**Epics (V1), one per sprint:** E1 One file end to end (CLI) · E2 Agreement between two annotation
+files · E3 Better agreement measures and web interface. The client requirements CR-01 to CR-12,
+confirmed in Meeting 5, are listed in the [product vision](docs/product/vision.md) and traced to
+the user stories in the [product backlog](docs/backlog/product-backlog.md).
+
+**Out of scope (V1), agreed with Jon in Meeting 5:** metadata forms (Dublin Core); licences and
+access categories; automatic corrections; steward approval before export; comparison between
+reports; report languages; uploading packages to CLARIAH or any other repository; Excel or ZIP files
+as input; user roles, permissions and notifications; very large files (a size limit is documented).
+These are kept as candidates for future versions.
 
 ## The team
 
@@ -75,7 +80,7 @@ e-mail notifications; Excel or ZIP files as input; training and community channe
 | **Ángela Garrido** | Translation and Interpreting (German and French) | Resource Investigator / Shaper | **Scrum Master** | Communicates the tasks, logs the working hours, internal communication; the board, the sprint plan and report, the retrospective |
 | **Olga** | Linguistics / data analysis | Completer Finisher / Coordinator | Developer | Client interview guide; reviews the user stories and the technical parts of the vision (clear, buildable and testable) |
 | **Marta Salvatierra** | Spanish and English Philology | Completer Finisher / Teamworker | Developer | Client meeting logs and transcripts; turns Jon's confirmed needs into user stories; the requirements document; reviews the wording of our documents; supports the Scrum Master |
-| **Garazi Garrido** | Artificial Intelligence | Resource Investigator / Specialist | Developer | GitHub set-up (repository, folders, board) and teaching the team to use it; GitHub issues from the user stories; reviews the risk register and creates the mitigation issues; sample data and licences; this README |
+| **Garazi Garrido** | Artificial Intelligence | Resource Investigator / Specialist | Developer | GitHub set-up (repository, folders, board, milestones) and teaching the team to use it; GitHub issues from the user stories; reviews the risk register and creates the mitigation issues; sample data and licences; this README |
 
 P = preferred Belbin roles, M = manageable roles.
 
@@ -90,8 +95,8 @@ keeps the role for the whole course.
 - **Somebody steps up:** Monitor Evaluator (Ali), Shaper (Ángela, as Scrum Master), Teamworker
   (Marta), Specialist (Garazi), Coordinator as backup (Olga).
 - **Uncovered: Plant and Implementer.**
-  - *Implementer* → the Scrum Master splits the work into small tasks on the board, each with an
-    owner and a deadline.
+  - *Implementer* → every story issue is split into small tasks (2 to 8 hours) in its checklist,
+    and the Scrum Master makes sure each one has an owner and a deadline.
   - *Plant* → at the start of each sprint we hold a short brainstorming in which everyone proposes
     ideas, and the Resource Investigators bring examples and tools from outside the team.
 
@@ -117,6 +122,7 @@ here disagrees with it.
 | **Availability** | About **15 hours per member in sprint 1** (≈ 7 h/week). Exact hours are set in each sprint plan. |
 | **Decisions** | Majority vote of the whole team, giving weight to each member's expertise on the topic (linguistic or technical). On a tie, the Scrum Master decides. Every decision is written in the related issue. |
 | **Tasks** | The Scrum Master assigns tasks in consensus with the team (role, skills, availability). Each task logs **estimated** and **real** hours. |
+| **Sprints** | One epic per sprint. Each sprint is a GitHub milestone (*Sprint 1*, *Sprint 2*, *Sprint 3*); see [how we use the board](docs/board/board.md). |
 | **AI assistants** | Used to draft, review and explain. Each member reviews what they commit and can explain it. Every document or pull request that used AI says so in one line: `AI use: …` |
 
 ## Team rules
@@ -147,23 +153,23 @@ are told. Full table in the [team charter](docs/team/team-charter.md).
 | [`docs/uml/`](docs/uml/) | Component diagram and deployment diagram | &lt;owner&gt; |
 | [`docs/risks/`](docs/risks/) | Risk register and mitigation issues | Garazi (review and issues) |
 | [`docs/sprints/`](docs/sprints/) | Sprint plan, sprint report and retrospective, one set per sprint | Ángela (SM) |
-| [`docs/board/`](docs/board/) | How we use the GitHub project board, with a snapshot | Ángela (SM) · Garazi (set-up) |
-| [`data/README.md`](data/README.md) | Sample datasets recommended by Jon (20 Newsgroups, OMW, NLTK) and their licences (the data itself is not committed) | Garazi |
-| [`src/`](src/) | Python skeleton: one module per component of the diagram, nothing implemented yet | developers |
+| [`docs/board/`](docs/board/) | How we use the GitHub project board and milestones, with a snapshot per sprint | Ángela (SM) · Garazi (set-up) |
+| [`data/README.md`](data/README.md) | Synthetic test data made by the team and sample datasets recommended by Jon (20 Newsgroups, OMW, NLTK), with their licences (the data itself is not committed) | Garazi |
+| [`src/`](src/) | Python skeleton: a core module (submit, check, agreement, package) and a thin command-line layer on top; the web interface will be a second layer in Epic 3 | developers |
 | [`scripts/`](scripts/) | Helper scripts | developers |
 | [`.github/`](.github/) | Issue templates (user story, task) and pull request template | Garazi |
 
 ## Sprint 1 checklist
 
-Deliverables for the **Sprint 1 review (S06, 17 November)**.
+Deliverables for the **Sprint 1 review (S06)**.
 
 | Deliverable | File | Owner | Status |
 |---|---|---|---|
 | Team charter | [`docs/team/team-charter.md`](docs/team/team-charter.md) | whole team | ✅ done |
-| Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | ✅ done |
-| Client conversation logs with confirmed requirements | [`docs/client/client-interviews.pdf`](docs/client/client-interviews.pdf) | Marta | ⬜ to do |
-| 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + [Issues tab](../../issues?q=label%3Astory) (12 stories) | Marta · Ali · Garazi | ✅ done |
-| Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Garazi |  ✅ done |
+| Product vision | [`docs/product/vision.md`](docs/product/vision.md) | Ali | 🔄 in progress (updated with Meeting 5, to be reviewed by Ali) |
+| Client conversation logs with confirmed requirements | [`docs/client/client-interviews.pdf`](docs/client/client-interviews.pdf) | Marta | ✅ done (Meetings 1 to 5, CR-01 to CR-12) |
+| 10 to 15 user stories as issues | [`docs/backlog/product-backlog.md`](docs/backlog/product-backlog.md) + [Issues tab](../../issues?q=label%3Astory) (12 stories, #16 to #27) | Marta · Ali · Garazi | 🔄 in progress (issues created; review by Olga and order by Ali pending) |
+| Requirements (use cases, stories, constraints) | [`docs/requirements/requirements.md`](docs/requirements/requirements.md) | Garazi | 🔄 in progress (to update for Meeting 5) |
 | Architecture (component and deployment diagrams) | [`docs/uml/`](docs/uml/) | &lt;owner&gt; | ⬜ to do |
 | Risk register | [`docs/risks/risks.md`](docs/risks/risks.md) | Garazi | 🔄 in progress |
 | Sprint 1 plan with the definition of done | [`docs/sprints/sprint-1-plan.pdf`](docs/sprints/sprint-1-plan.pdf) | Ángela | ⬜ to do |
@@ -180,9 +186,11 @@ history. For the eGela submission each document is exported to PDF.
 - `main` holds what has been reviewed. During sprint 1 we work on the branch `Sprint1`, which is
   merged into `main` through a pull request reviewed by a member who did not write it.
 - Every member commits with their own GitHub account.
-- Every story and every task is an issue, created from the templates in `.github/ISSUE_TEMPLATE/`.
+- Every story and every task is an issue, created from the templates in `.github/ISSUE_TEMPLATE/`,
+  with its labels (`story` or `task`, priority, epic) and the milestone of its sprint.
   The [board](https://github.com/users/garazigg/projects/4/views/1) shows where each one is.
 - Each issue records the estimated and the real hours of the task.
+- A pull request that finishes an issue says `Closes #<n>`.
 - Commits, issues, pull requests and documents are written in English. Pull requests that used AI
   include an `AI use: …` line.
 
@@ -190,8 +198,7 @@ history. For the eGela submission each document is exported to PDF.
 
 - Keys and data never enter the repository: `.env` and `data/` are ignored (except
   `data/README.md`). `.env.example` lists the variables without values.
-- The application runs entirely on CPU and needs no external service. If the optional Latxa API is
-  used, its responses are recorded once and replayed in tests and in the demonstration, so nothing
-  depends on a live service.
-- Only instructor-provided, instructor-approved or client-recommended data is processed, after
-  checking the licence of the exact files in [`data/README.md`](data/README.md).
+- The application runs entirely on CPU and needs no external service.
+- Only synthetic data made by the team, instructor-provided, instructor-approved or
+  client-recommended data is processed, after checking the licence of the exact files in
+  [`data/README.md`](data/README.md).
