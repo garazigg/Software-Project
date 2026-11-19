@@ -128,15 +128,7 @@ to a story or a risk, write `Part of #<n>` in its description.
 5. When the pull request is merged (the issue closes automatically) and the PO has accepted it,
    the reviewer drags the card to **Done**.
 
-## 8. Snapshot
 
-Snapshot of the board at the end of each sprint, for the sprint report.
-
-| Sprint | Date | Snapshot |
-|---|---|---|
-| 1 | <date of the review> | ![Board at the end of sprint 1](board-sprint-1.png) |
-| 2 | <date of the review> | ![Board at the end of sprint 2](board-sprint-2.png) |
-| 3 | <date of the review> | ![Board at the end of sprint 3](board-sprint-3.png) |
 
 ## Change log
 
