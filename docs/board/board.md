@@ -1,7 +1,7 @@
 # How we use the project board · Team 2
 
 Project P4 · CLARIAH Resource Builder · Software Project · Master HAP/LAP · EHU · 2026-27
-Written by: Garazi Garrido · Reviewed by: Ángela Garrido (SM) · Last update: 16 November 2026
+Written by: Garazi Garrido · Reviewed by: Ángela Garrido (SM) · Last update: 19 November 2026
 
 > AI use: drafted with the help of an AI assistant (Claude) and reviewed by the team.
 
@@ -13,6 +13,10 @@ The board shows every piece of work of the team as a card. Each card is a **GitH
 story, a task or a risk mitigation. Looking at the board, anyone can see what is planned, what is
 being done and what is finished, and who is doing it.
 
+The issues come from the [product backlog](../backlog/product-backlog.md): 12 user stories
+(US-01 to US-12, issues #16 to #27) traced to the requirements CR-01 to CR-12 confirmed in
+Meeting 5, and 2 supporting tasks (T-01 and T-02, issues #28 and #29).
+
 ## 2. Columns
 
 | Column | Meaning | Who moves the card here |
@@ -21,56 +25,90 @@ being done and what is finished, and who is doing it.
 | **In Progress** | Somebody is working on it now | The owner, when they start |
 | **Done** | Finished and meets the definition of done | The owner, when it is finished |
 
-Stories that are not planned for the current sprint stay in the product backlog
-([`docs/backlog/`](../backlog/)) and are not on the board yet.
+Only the issues of the **current sprint** are on the board. The others stay in the product
+backlog ([`docs/backlog/`](../backlog/)) and in their milestone until their sprint is planned.
 
-## 3. Types of card
+## 3. Sprints and epics
 
-| Type | Template | Label | Title |
+Each sprint is a GitHub **milestone** (*Issues → Milestones*), and each sprint delivers one epic:
+
+| Milestone | Epic | Issues |
+|---|---|---|
+| Sprint 1 | E1 · One file end to end (CLI) | US-01 to US-07 (#16–#22), T-01 (#28), T-02 (#29) |
+| Sprint 2 | E2 · Agreement between two annotation files | US-08 to US-10 (#23–#25) |
+| Sprint 3 | E3 · Better agreement measures and web interface | US-11, US-12 (#26–#27) |
+
+At sprint planning, the Scrum Master adds the issues of the sprint's milestone to the board.
+A story that is not finished stays open and moves to the next milestone.
+
+## 4. Types of card
+
+| Type | Template | Labels | Title |
 |---|---|---|---|
-| User story | *User story* | `story` | `US-xx · <short name>` |
-| Task | *Task* | `task` | `<verb> <what>` |
+| User story | *User story* | `story` + priority (`must`, `should`, `could`) + epic (`E1`, `E2`, `E3`) | `US-xx · <short name>` |
+| Task | *Task* | `task` | `T-xx · <verb> <what>` |
 | Risk mitigation | *Task* | `risk` | `R-xx · Mitigate: <what>` |
 
-Every task belongs to a story or to a risk: write `Part of #<n>` in its description.
+The priority label is set by the Product Owner. The epic label must match the epic of the story in
+the backlog.
 
-## 4. Rules
+**Tasks of a story.** The tasks that build a story (2 to 8 hours each) are the checklist in the
+*Tasks* section of the story issue, not separate cards. A separate task card is only for work with
+no direct user value (data, set-up, documentation) or for a risk mitigation. If such a task belongs
+to a story or a risk, write `Part of #<n>` in its description.
+
+## 5. Rules
 
 1. **One owner per card.** The owner is set in *Assignees*.
-2. **Assigning tasks.** The Scrum Master assigns the tasks in consensus with the team (role,
-   skills, availability). While we are learning GitHub, the Scrum Master creates and moves the
-   cards; afterwards each member moves their own.
-3. **Hours.** When a task is created, the owner writes the **estimated hours** in *Planning*.
-   When it is finished, they add the **real hours** in a comment before moving it to *Done*.
-4. **Maximum 2 cards in *In Progress* per person**, so that work is finished before new work
+2. **Signing up for tasks.** Each member signs up for a task by writing their GitHub user in its
+   checklist line (`@user`). The Scrum Master checks at sprint planning that the work is shared out
+   in consensus with the team (role, skills, availability). While we are learning GitHub, the
+   Scrum Master creates and moves the cards; afterwards each member moves their own.
+3. **Hours.** Every task line already carries its **estimated hours**. When a task is finished,
+   the owner ticks it and adds the **real hours** in a comment on the issue
+   (e.g. `T: core submit function · est. 4h · real 5h`).
+4. **Points.** The points of each story are in *Planning*. They are voted by the team at sprint
+   planning and updated in the issue and in the backlog.
+5. **Maximum 2 cards in *In Progress* per person**, so that work is finished before new work
    starts.
-5. **Done means done.** A card goes to *Done* only when it meets the definition of done in the
-   [sprint plan](../sprints/sprint-1-plan.pdf) and its result is in the repository and linked
+6. **Done means done.** A card goes to *Done* only when all its tasks are ticked, its acceptance
+   criteria have been shown to the Product Owner, it meets the definition of done in the
+   [sprint plan](../sprints/sprint-1-plan.pdf), and its result is in the repository and linked
    from the issue.
-6. **Decisions** about a card are written as comments in its issue, in English.
-7. **Stand-ups** are posted in the issue *"Stand-ups Sprint 1"*: what I did, what I will do,
+7. **Decisions** about a card are written as comments in its issue, in English.
+8. **Stand-ups** are posted in the issue *"Stand-ups Sprint 1"*: what I did, what I will do,
    what is blocking me.
 
-## 5. Step by step
+## 6. Step by step
 
 **Create a card**
 
 1. Go to **Issues → New issue** and choose the template (*User story* or *Task*).
-2. Fill the title and the template, add the label and yourself (or the owner) in *Assignees*.
+2. Fill the title and the template, add the labels, the milestone of the sprint and yourself (or
+   the owner) in *Assignees*.
 3. In *Projects*, choose our board. The card appears in **Todo**.
 
 **Work on a card**
 
 1. Open the board and drag your card to **In Progress**.
-2. When you finish, write the real hours in a comment, link the result (file or pull request),
-   and drag the card to **Done**.
-3. If a pull request finishes the issue, write `Closes #<n>` in the pull request: the issue
+2. Tick each task when it is done and write its real hours in a comment.
+3. When you finish, link the result (file or pull request) and drag the card to **Done**.
+4. If a pull request finishes the issue, write `Closes #<n>` in the pull request: the issue
    closes automatically when it is merged.
 
-## 6. Snapshot
+## 7. Snapshot
 
 Snapshot of the board at the end of each sprint, for the sprint report.
 
 | Sprint | Date | Snapshot |
 |---|---|---|
 | 1 | <date of the review> | ![Board at the end of sprint 1](board-sprint-1.png) |
+| 2 | <date of the review> | ![Board at the end of sprint 2](board-sprint-2.png) |
+| 3 | <date of the review> | ![Board at the end of sprint 3](board-sprint-3.png) |
+
+## Change log
+
+| Date | Change | By |
+|---|---|---|
+| 16 November 2026 | Board guide created | Garazi Garrido |
+| 19 November 2026 | Updated for the Meeting 5 backlog: issues #16 to #29, sprints as milestones (one epic each), priority and epic labels, story tasks as checklists with sign-up, task titles `T-xx` | Garazi Garrido |
