@@ -150,7 +150,7 @@ are told. Full table in the [team charter](docs/team/team-charter.md).
 | [`docs/product/`](docs/product/) | Product vision | Ali (PO) · reviewed by Olga |
 | [`docs/backlog/`](docs/backlog/) | Product backlog: epics and user stories. Each story is also a GitHub issue | Marta (writes) · Olga (reviews) · Ali (approves and orders) · Garazi (issues) |
 | [`docs/requirements/`](docs/requirements/) | Stakeholders, use cases, constraints | Marta |
-| [`docs/uml/`](docs/uml/) | Component diagram and deployment diagram | &lt;owner&gt; |
+| [`docs/uml/`](docs/uml/) | Component diagram and deployment diagram | Olga |
 | [`docs/risks/`](docs/risks/) | Risk register and mitigation issues | Garazi (review and issues) |
 | [`docs/sprints/`](docs/sprints/) | Sprint plan, sprint report and retrospective, one set per sprint | Ángela (SM) |
 | [`docs/board/`](docs/board/) | How we use the GitHub project board and milestones, with a snapshot per sprint | Ángela (SM) · Garazi (set-up) |
