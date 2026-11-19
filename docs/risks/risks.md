@@ -2,7 +2,7 @@
 
 Project P4 · Software Project · Master HAP/LAP · EHU · 2026-27 · **Team 2**
 Written by: Garazi Garrido · Reviewed by: Marta Salvatierra · Approved by: Ali Faraz (PO)
-Status: **draft** · Last update: 17 November 2026
+Status: **draft** · Last update: 19 November 2026
 
 > AI use: drafted with the help of an AI assistant (Claude) and reviewed by the team.
 
@@ -10,10 +10,12 @@ Status: **draft** · Last update: 17 November 2026
 
 - Every risk has an **owner**, who watches it and acts if it happens.
 - Risks that need a specific action this sprint have a **mitigation issue** in GitHub
-  (label `risk`), created by Garazi and linked in the last column. The other risks are covered
+  (label `risk`), created by Garazi and linked in the last column. When a user story or task
+  already covers the mitigation, that issue is linked instead. The other risks are covered
   by our normal way of working (stand-ups, hours log, pull request reviews).
 - The register is reviewed at the **start and end of each sprint** (sprint planning and
   retrospective). Changes are recorded in the [review log](#review-log).
+- Closed risks stay in the table with the reason, so that the history is visible.
 
 **Scale**
 
@@ -29,28 +31,30 @@ Status: **draft** · Last update: 17 November 2026
 
 | ID | Risk | Category | P | I | Score | Mitigation (prevent) | Contingency (if it happens) | Owner | Status | Issue |
 |---|---|---|---|---|---|---|---|---|---|---|
-| R-01 | Requirements are not confirmed by Jon before he stops being available (17 Nov), so stories rest on assumptions | Client | 1 | 3 | 🟡 3 | Prepare the questions in advance (interview guide, requirements §7); ask the most important first; log every answer as a `CR-nn` | Mark unconfirmed items as assumptions in the backlog and validate them at the review | Ali | mitigated: CR-01 to CR-12 confirmed (product vision §5); a few details still open (requirements §7) | to create |
-| R-02 | Some members are not yet comfortable with GitHub (issues, board, branches, pull requests) | Process | 3 | 2 | 🔴 6 | Garazi gives a short GitHub session; step-by-step guide in `docs/board/`; stand-ups copied to GitHub by the SM meanwhile | Pair a member with Garazi for their first commits and pull requests | Garazi | open | to create |
+| R-01 | Requirements are not confirmed by Jon, so stories rest on assumptions | Client | 1 | 3 | 🟡 3 | Prepare the questions in advance (interview guide); ask the most important first; restate each need and log every confirmed answer as a `CR-nn` | Mark unconfirmed items as assumptions in the backlog and validate them at the review | Ali | mitigated: the new CR-01 to CR-12 were confirmed in Meeting 5 (19 Nov); open points remain: item matching, agreement measure, list of issue types, report format, size limit (backlog, "Open points") | — |
+| R-02 | Some members are not yet comfortable with GitHub (issues, milestones, board, branches, pull requests) | Process | 3 | 2 | 🔴 6 | Garazi gives a short GitHub session; step-by-step guide in `docs/board/`; stand-ups copied to GitHub by the SM meanwhile | Pair a member with Garazi for their first commits and pull requests | Garazi | open | to create |
 | R-03 | Misunderstandings because of different backgrounds, cultures and levels of English | Team | 2 | 2 | 🟡 4 | Decisions written in English in the issues; ask instead of assuming; help members who do not master English | Clarify in the moment, focusing on the work (team charter §6) | Ángela | open | — |
 | R-04 | A member falls behind, stops answering or misses a deadline | Team | 2 | 3 | 🔴 6 | Internal deadlines before the official ones; progress shared in WhatsApp; warn in advance | The SM follows up and the task is split or shared; if it happens again, the instructors are told | Ángela | open | — |
-| R-05 | Hours are underestimated, so the sprint plan cannot be completed | Process | 3 | 2 | 🔴 6 | Small tasks with estimated hours; real hours logged in each issue; ~15 h per member in sprint 1 | Move the lowest-priority stories back to the backlog | Ángela | open | — |
-| R-06 | Scope creep: trying to support too many formats or schemas (out of scope in the brief) | Product | 1 | 3 | 🟡 3 | Input limited to CSV and JSONL, metadata to Dublin Core (confirmed with Jon); out-of-scope list in the product vision §6 | The PO cuts the extra work and sends it to the backlog | Ali | mitigated | — |
-| R-07 | The original file is modified or lost by a bug | Product / data | 2 | 3 | 🔴 6 | Original stored read-only with a checksum; every transformation creates a new revision; automated test that compares checksums | Restore from the stored original; report the bug as an issue with priority | Garazi | open | — |
-| R-08 | Data without approval or with an unclear licence is used in the project (Jon warned that some OMW languages and other NLTK corpora have different terms) | Legal / data | 2 | 3 | 🔴 6 | Only the datasets recommended by Jon or approved by the instructors; the licence of the exact version and files is checked and marked in `data/README.md` before use | Remove the file from the work and from the history, and tell the instructors | Garazi | open | — |
-| R-09 | A wrong licence or access category is assigned to a resource in a package | Legal / product | 2 | 3 | 🔴 6 | Licence never inferred; chosen by a person from the approved list confirmed by Jon (CC0 1.0, CC-BY 4.0, CC-BY-SA 4.0); access category derived from the CLARIAH policy table; explicit approval before export (US-09, US-12) | Regenerate the package with the correct licence; the history shows the change | Garazi | open | to create |
+| R-05 | Hours are underestimated, so the sprint plan cannot be completed. Sprint 1 (E1 + T-01, T-02) is estimated at about 105 h, more than ~15 h per member (~75 h for five) | Process | 3 | 2 | 🔴 6 | Small tasks with estimated hours; real hours logged in each issue; points voted at sprint planning; the PO orders E1 so that submit, format check and report (US-01 to US-04) come first | Move the last E1 stories (e.g. US-07 extras such as `run`) to Sprint 2, after agreement with the PO | Ángela | open | — |
+| R-06 | Scope creep: trying to do more than the four steps of V1 (submit, format check, agreement, package) | Product | 1 | 3 | 🟡 3 | Input limited to CSV and JSONL; V1 limited to CR-01 to CR-12 (Meeting 5); out-of-scope list in the product vision §6 (metadata forms, licences, corrections, approval, report comparison, repository upload) | The PO cuts the extra work and sends it to the backlog as a future version | Ali | mitigated | — |
+| R-07 | The original file is modified or lost by a bug | Product / data | 2 | 3 | 🔴 6 | Original stored read-only with a SHA-256 checksum; every output is a new file; checksum verified before every step; automated test that compares checksums before and after the pipeline | Restore from the stored original; report the bug as an issue with priority | Garazi | open | #17 (US-02) |
+| R-08 | Data without approval or with an unclear licence is used in the project (Jon warned that some OMW languages and other NLTK corpora have different terms) | Legal / data | 2 | 3 | 🔴 6 | Synthetic data generated by the team for tests and demos; only the datasets recommended by Jon or approved by the instructors; the licence of the exact version and files is checked and marked in `data/README.md` before use | Remove the file from the work and from the history, and tell the instructors | Garazi | open | #28 (T-01) |
+| R-09 | A wrong licence or access category is assigned to a resource in a package | Legal / product | 2 | 3 | 🔴 6 | — | — | Garazi | closed: licences and access categories are out of the V1 scope (Meeting 5) | — |
 | R-10 | Keys or data are committed to the repository | Security | 1 | 3 | 🟡 3 | `.env` and `data/` in `.gitignore`; `.env.example` without values; check in pull request review | Revoke the key immediately and remove it from the history | Garazi | open | — |
-| R-11 | The optional Latxa API is unavailable, slow or gives different answers | Technical | 2 | 2 | 🟡 4 | Product works without it (CPU only); responses recorded once and replayed in tests and demo | Disable the Latxa feature; the rest of the tool still works | Garazi | open | — |
-| R-12 | Large files make validation too slow or break the tool | Technical | 2 | 2 | 🟡 4 | Size limit chosen and documented by the team (files up to 1 GB are out of scope in V1); test with a file at the limit | Reject the file with a clear message | Garazi | open | — |
-| R-13 | Not every member understands the architecture well enough to explain it at the reviews | Team | 2 | 2 | 🟡 4 | Diagrams explained in a team meeting; each member presents one part before the review | Rehearsal of the review the day before | Olga | open | — |
-| R-14 | AI-generated content contains errors or is not understood by its author | Quality | 2 | 2 | 🟡 4 | Each member reviews what they commit and can explain it; `AI use: …` line; peer review in pull requests | Correct the content and note it in the retrospective | whole team | open | — |
-| R-15 | Nobody turns plans into concrete steps (no Implementer in the team) | Team | 2 | 2 | 🟡 4 | The SM splits the work into small tasks on the board, each with an owner and a deadline | Re-plan in the next stand-up | Ángela | open | — |
-| R-16 | Producing the report in three formats (JSON, web page, PDF) takes more effort than planned or adds a heavy PDF dependency | Technical | 2 | 2 | 🟡 4 | Build JSON first and generate the web page and the PDF from the same HTML template with one light library | Deliver JSON + web page first; PDF moves to the next sprint after agreement with the PO | Garazi | open | — |
+| R-11 | The optional Latxa API is unavailable, slow or gives different answers | Technical | 2 | 2 | 🟡 4 | — | — | Garazi | closed: no Latxa feature in the V1 scope (Meeting 5); reopen if one is added | — |
+| R-12 | Large files make the format check, the checksum or the agreement too slow, or break the tool | Technical | 2 | 2 | 🟡 4 | Size limit chosen and documented by the team (typical files: a few MB to 200 MB; up to 1 GB is out of scope in V1); files read as a stream; test with a file at the limit | Reject the file with a clear message | Garazi | open | #16 (US-01) |
+| R-13 | Not every member understands the architecture (core module + CLI, later web) well enough to explain it at the reviews | Team | 2 | 2 | 🟡 4 | Diagrams explained in a team meeting; each member presents one part before the review | Rehearsal of the review the day before | Olga | open | — |
+| R-14 | AI-generated content (documents, stories, code) contains errors or is not understood by its author | Quality | 2 | 2 | 🟡 4 | Each member reviews what they commit and can explain it; `AI use: …` line; peer review in pull requests; the user stories are reviewed by Olga and ordered by the PO before Sprint 1 | Correct the content and note it in the retrospective | whole team | open | — |
+| R-15 | Nobody turns plans into concrete steps (no Implementer in the team) | Team | 2 | 2 | 🟡 4 | Every story issue already has a task checklist (2–8 h each); members sign up for tasks and the SM checks at sprint planning that every task has an owner | Re-plan in the next stand-up | Ángela | open | — |
+| R-16 | The report format inside the ZIP is still undecided (JSON, web page, PDF or several), and building several formats takes more effort than planned | Technical | 2 | 2 | 🟡 4 | Build a JSON report and a readable text summary first (US-04); ask Jon which format he needs before adding others | Deliver JSON + text in Sprint 1; other formats go to the backlog after agreement with the PO | Garazi | open | #19 (US-04) |
+| R-17 | The client changes the scope again, as in Meeting 5, and work already done or planned is thrown away | Client / product | 2 | 3 | 🔴 6 | One epic per sprint, each delivered end to end; core logic separated from the interface; every scope change confirmed with Jon as `CR-nn` and recorded in the vision and backlog change logs | The PO re-plans the backlog; finished work is kept in the repository and reused where possible | Ali | open | — |
+| R-18 | The agreement score is wrong or misleading (items matched wrongly, files that do not match, a percentage inflated by one dominant label) | Product | 2 | 3 | 🔴 6 | Matching by ID column, otherwise row order, shown in the report; non-comparable files refused (US-10); tests against hand-computed examples and a reference implementation of Cohen's kappa (US-09, US-11) | Withdraw the score from the report, fix the bug and re-run the affected pairs | Olga | open | #24, #25, #26 |
 
 ## Top risks this sprint
 
-1. **R-02** · GitHub learning curve.
-2. **R-04** · Different working rhythms.
-3. **R-08** · Licences of the sample datasets.
+1. **R-05** · Sprint 1 load (~105 h estimated for E1 and its supporting tasks).
+2. **R-02** · GitHub learning curve.
+3. **R-07** · The original file must never change (the hard constraint of the product).
 
 ## Review log
 
@@ -58,3 +62,4 @@ Status: **draft** · Last update: 17 November 2026
 |---|---|---|---|
 | 16 November 2026 | 1 | Register created | Garazi Garrido |
 | 17 November 2026 | 1 | Updated with the product vision v1.1: R-01 and R-06 mitigated; R-08, R-09 and R-12 updated; R-16 added | Garazi Garrido |
+| 19 November 2026 | 1 | Updated for the new scope of Meeting 5: R-01 and R-06 rewritten (still mitigated); R-09 and R-11 closed (out of V1 scope); R-05 raised with the Sprint 1 estimate; R-07, R-08, R-12, R-14, R-15 and R-16 updated and linked to their stories; R-17 (scope change) and R-18 (agreement errors) added; top risks changed | Garazi Garrido |
