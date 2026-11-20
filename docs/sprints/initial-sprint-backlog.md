@@ -52,9 +52,12 @@ Real hours = what it really took, from the hours each member logged.
 | | Stand-ups and hours log; internal communication | | | |
 | | Reviewed the board guide | | | |
 | | *Subtotal* | | | |
-| **Olga Makarova** | Client interview guide and follow-up questions | | | |
-| | Reviewed the user stories and the technical parts of the vision | | | |
-| | *Subtotal* | | | |
+| **Olga Makarova** | Client interview guide and follow-up questions | 3 | 4 | +1 |
+| | Reviewed user stories and the technical parts of the vision (version 1) | 4 | 4 | 0 |
+| | Revised user stories, vision, client interviews & log (version 2) | 4 | 5.5 | +1.5 |
+| | Built use case diagram, component diagram, deployment diagram | 1 | 2 | +1 |
+| | Resolving tech issue with access to Jon | 0 | 1.5 | +1.5 |
+| | *Subtotal* | *12* | *17* | *+5* |
 | **Marta Salvatierra** | Notes, meeting logs and transcripts of Meetings 1 to 5 | | | |
 | | First version of the user stories and the product backlog | | | |
 | | Reviewed the risk register and the wording of our documents | | | |
