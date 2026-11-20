@@ -59,11 +59,11 @@ Real hours = what it really took, from the hours each member logged.
 | | First version of the user stories and the product backlog | | | |
 | | Reviewed the risk register and the wording of our documents | | | |
 | | *Subtotal* | | | |
-| **Garazi Garrido** | GitHub set-up (repository, folders, templates, board, milestones) and teaching the team | | | |
-| | Requirements document (use cases) | | | |
-| | GitHub issues from the user stories (#16–#29) | | | |
-| | Risk register, README and board guide | | | |
-| | *Subtotal* | | | |
+| **Garazi Garrido** | GitHub set-up (repository, folders, templates, board, milestones) and teaching the team | 4 | 6 | +2 |
+| | Requirements document (use cases) | 5 | 7.5 | +2.5 |
+| | GitHub issues from the user stories (#16–#29) | 2 | 3 | +1 |
+| | Risk register, README and board guide | 3 | 4 | +1 |
+| | *Subtotal* | *14* | *20.5* | *+6.5* |
 | **Whole team** | Belbin test, team diagnosis and team charter (each member) | | | |
 | | Client meetings (attendance of each member) | | | |
 | | **Total** | | | |
@@ -76,3 +76,4 @@ tasks took longer than expected and why>.
 | Date | Change | By |
 |---|---|---|
 | 20 November 2026 | Initial sprint backlog created: goal, deliverables and hours per member | Garazi Garrido |
+| 20 November 2026 | Hours of Garazi Garrido filled in | Garazi Garrido |
